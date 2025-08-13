@@ -8,7 +8,7 @@ import java.util.Optional;
 
 import com.project.back_end.models.Doctor;
 import com.project.back_end.models.Patient;
-import com.project.back_end.models.Admin;
+
 import com.project.back_end.models.Appointment;
 
 
@@ -30,12 +30,6 @@ public class Service {
     public Map<String, Object> validateAdmin(String credentials) {
         Map<String, Object> response = new HashMap<>();
 
-        if ("admin".equals(credentials.getUsername()) && "1234".equals(credentials.getPassword())) {
-            response.put("status", "success");
-            response.put("token", "fake-jwt-token");
-        } else {
-            response.put("status", "fail");
-        }
 
         return response;
     }

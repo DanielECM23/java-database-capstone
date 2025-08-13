@@ -22,7 +22,10 @@ public class DoctorController {
 
     @Autowired
     private Service service;
-
+    public ResponseEntity<List<Doctor>> getAllDoctors() {
+    List<Doctor> doctors = doctorService.getAllDoctors();
+    return ResponseEntity.ok(doctors);
+}
     /**
      * GET - Check doctor availability
      */
