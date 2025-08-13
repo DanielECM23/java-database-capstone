@@ -28,12 +28,12 @@ public class Appointment {
     private LocalDateTime appointmentTime;
 
     @NotNull(message = "El estado de la cita no puede ser nulo")
-    private int status; // 0 = Programada, 1 = Completada
+    private String status; // por ejemplo: "scheduled", "completed", "prescription_added"
 
     public Appointment() {
     }
 
-    public Appointment(Doctor doctor, Patient patient, LocalDateTime appointmentTime, int status) {
+    public Appointment(Doctor doctor, Patient patient, LocalDateTime appointmentTime, String status) {
         this.doctor = doctor;
         this.patient = patient;
         this.appointmentTime = appointmentTime;
@@ -72,11 +72,11 @@ public class Appointment {
         this.appointmentTime = appointmentTime;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

@@ -32,9 +32,9 @@
           <h2>Selecciona tu rol</h2>
 
           <div class="buttons-row">
-            <button id="btnAdmin" class="role-btn" onclick="selectRole('admin')">Administrador</button>
-            <button id="btnDoctor" class="role-btn" onclick="selectRole('doctor')">Doctor</button>
-            <button id="btnPatient" class="role-btn" onclick="selectRole('patient')">Paciente</button>
+            <button id="btnAdmin" class="role-btn">Administrador</button>
+            <button id="btnDoctor" class="role-btn">Doctor</button>
+            <button id="btnPatient" class="role-btn">Paciente</button>
           </div>
 
           <p class="hint">
@@ -53,20 +53,18 @@
     <div class="modal-content" role="dialog" aria-modal="true">
       <button id="closeModal" class="close" aria-label="Cerrar">&times;</button>
       <div id="modal-body">
-        <!-- Contenido dinámico: por ejemplo, formulario de login según el rol -->
-        <h3 id="modal-title">Iniciar sesión</h3>
-        <div id="modal-form">
-          <!-- Ejemplo simple (puedes sustituir con formularios completos) -->
-          <label for="email">Email</label>
-          <input id="loginEmail" type="email" placeholder="correo@ejemplo.com" />
-          <label for="pwd">Contraseña</label>
-          <input id="loginPwd" type="password" placeholder="********" />
-          <div class="modal-actions">
-            <button id="loginSubmit" class="primary">Iniciar sesión</button>
-          </div>
-        </div>
+        <!-- Aquí se inyectará el contenido desde modals.js -->
       </div>
     </div>
   </div>
+
+  <!-- Conectar botones con modals.js -->
+  <script type="module">
+    import { openModal } from './js/modals.js';
+
+    document.getElementById("btnAdmin").addEventListener("click", () => openModal("adminLogin"));
+    document.getElementById("btnDoctor").addEventListener("click", () => openModal("doctorLogin"));
+    document.getElementById("btnPatient").addEventListener("click", () => openModal("patientLogin"));
+  </script>
 </body>
 </html>

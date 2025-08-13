@@ -107,4 +107,9 @@ public class Doctor {
     public void setAvailableTimes(List<String> availableTimes) {
         this.availableTimes = availableTimes;
     }
+
+    public Doctor orElse(Object object) {
+  
+        throw new UnsupportedOperationException("Unimplemented method 'orElse'");
+    }
 }
