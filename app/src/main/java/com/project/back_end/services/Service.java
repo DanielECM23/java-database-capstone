@@ -11,28 +11,26 @@ import com.project.back_end.models.Patient;
 import com.project.back_end.models.Admin;
 import com.project.back_end.models.Appointment;
 
-import org.springframework.stereotype.Service;
 
-@Service
-public class ValidationService {
+public class Service {
 
     private final TokenService tokenService;
 
-    public ValidationService(TokenService tokenService) {
+    public Service(TokenService tokenService) {
         this.tokenService = tokenService;
     }
 
     // Validar token y rol
     public boolean validateToken(String token, String role) {
-        // Llama a un método válido de TokenService
+        // Aquí deberías delegar a TokenService para validar token y rol
         return tokenService.isValidToken(token, role);
     }
 
     // Validar login de administrador
-    public Map<String, Object> validateAdmin(Admin admin) {
+    public Map<String, Object> validateAdmin(String credentials) {
         Map<String, Object> response = new HashMap<>();
 
-        if ("admin".equals(admin.getUsername()) && "1234".equals(admin.getPassword())) {
+        if ("admin".equals(credentials.getUsername()) && "1234".equals(credentials.getPassword())) {
             response.put("status", "success");
             response.put("token", "fake-jwt-token");
         } else {
@@ -42,8 +40,9 @@ public class ValidationService {
         return response;
     }
 
-    // Métodos de filtro de doctores
+    // Filtros de doctores
     public List<Doctor> filterDoctors(String name, String time, String speciality) {
+        // Implementar lógica combinada de filtros
         return new ArrayList<>();
     }
 
@@ -84,6 +83,7 @@ public class ValidationService {
         return new ArrayList<>();
     }
 
+    // Obtener doctor/paciente por ID
     public Optional<Doctor> getDoctorById(Long doctorId) {
         return Optional.empty();
     }

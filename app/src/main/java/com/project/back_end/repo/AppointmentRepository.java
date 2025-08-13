@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import jakarta.transaction.Transactional;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -19,8 +18,8 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
     // 1. Buscar citas de un doctor en un rango de tiempo
     List<Appointment> findByDoctorIdAndAppointmentTimeBetween(Long doctorId, LocalDateTime start, LocalDateTime end);
 
-    List<Appointment> findByDoctorIdAndDate(Long doctorId, LocalDate date);
-    
+    List<Appointment> findByDoctorIdAndDate(Long doctorId, String date);
+
     // 2. Buscar citas de un doctor por nombre de paciente y rango de tiempo
     List<Appointment> findByDoctorIdAndPatient_NameContainingIgnoreCaseAndAppointmentTimeBetween(
             Long doctorId, String patientName, LocalDateTime start, LocalDateTime end);

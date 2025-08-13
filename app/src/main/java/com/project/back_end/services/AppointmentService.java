@@ -12,11 +12,6 @@ import java.util.List;
 public class AppointmentService {
 
     private final AppointmentRepository appointmentRepository;
-    private final DoctorRepository doctorRepository;
-    private final PatientRepository patientRepository;
-    private final Service service; // Tu service genérico (ej: validateToken, filtros)
-    private final TokenService tokenService;
-
     // Constructor injection
     public AppointmentService(
             AppointmentRepository appointmentRepository,
@@ -26,10 +21,6 @@ public class AppointmentService {
             TokenService tokenService
     ) {
         this.appointmentRepository = appointmentRepository;
-        this.doctorRepository = doctorRepository;
-        this.patientRepository = patientRepository;
-        this.service = service;
-        this.tokenService = tokenService;
     }
 
     // Book appointment
