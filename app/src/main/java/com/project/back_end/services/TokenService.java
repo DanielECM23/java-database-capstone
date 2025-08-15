@@ -3,6 +3,7 @@ package com.project.back_end.services;
 import com.project.back_end.repo.AdminRepository;
 import com.project.back_end.repo.DoctorRepository;
 import com.project.back_end.repo.PatientRepository;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -65,34 +66,11 @@ public class TokenService {
     }
 
     // Extraer email de un token
-    public String extractEmail(String token) {
-        try {
-            Claims claims = Jwts.parserBuilder()
-                    .setSigningKey(getSigningKey())
-                    .build()
-                    .parseClaimsJws(token)
-                    .getBody();
+    /**
+     * @param token
+     * @return
+     */
 
-            return claims.getSubject();
-        } catch (Exception e) {
-            return null;
-        }
-    }
 
-    // Validar token según el rol
-    public boolean validateToken(String token, String role) {
-        String email = extractEmail(token);
-        if (email == null) return false;
 
-        switch (role.toLowerCase()) {
-            case "admin":
-                return adminRepository.existsByEmail(email);
-            case "doctor":
-                return doctorRepository.existsByEmail(email);
-            case "patient":
-                return patientRepository.existsByEmail(email);
-            default:
-                return false;
-        }
-    }
 }
